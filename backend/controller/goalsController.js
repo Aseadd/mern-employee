@@ -9,17 +9,22 @@ const getGoals = asyncHander (async (req, res) => {
 })
 
 const setGoals = asyncHander(async (req, res) => {
-    if(!req.body.text){
+    const { text, dateOfBirth, gender, salary } = req.body
+
+    if(!text || !dateOfBirth || !gender || !salary){
         res.status(400)
-        throw new Error("Please provide a text")
+        throw new Error("Please provide a text, date of birth and salary")
     }
-
-
-    const goal = await Goal.create({
-        text: req.body.text,
-        user: req.user._id
-})
-    res.status(201).json(goal)
+    
+      const goal = await Goal.create({
+        text: text,
+        dateOfBirth: dateOfBirth,
+        gender: gender,
+        salary: salary,
+        user: req.user.id,
+      })
+    
+      res.status(200).json(goal)
 })
 
 const updateGoal =asyncHander( async (req, res) => {
