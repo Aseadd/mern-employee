@@ -60,10 +60,6 @@ Run both backend and frontend
 - **Linters Check:** Local and Pull Request check for errors, bugs and stylistic errors in code.
 - **React:** JavaScript library.
 
-## 🌎 Live Demo:
-
-- [math magician]()
-
 ## Authors
 
 ### 👤 Addis Tsega
