@@ -46,24 +46,6 @@ Run both backend and frontend
 ```sh
   npm run dev
 ```
-- **Type the following lists of commands and press ENTER after each command:**
-  - _Basic Setup_
-
-```sh
-  npm start
-```
-
-- **Open folder in VSC**
-
-```sh
-  code .
-```
-
-### Launches the test runner
-
-```sh
-  npm test
-```
 
 ### To build the app for production
 
