@@ -84,17 +84,19 @@ const [salary, setSalary] = useState('')
             id='name'
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
 
         <div>
           <label htmlFor='text'>Date of birth</label>
           <Input
-            type='text'
+            type='date'
             name='dateOfBirth'
             id='dateOfBirth'
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
+            required
           />
         </div>
 
@@ -114,11 +116,12 @@ const [salary, setSalary] = useState('')
         <div>
           <label htmlFor='text'>Salary</label>
           <Input
-            type='text'
+            type='number'
             name='salary'
             id='salary'
             value={salary}
             onChange={(e) => setSalary(e.target.value)}
+            required
           />
         </div>
         <div>
