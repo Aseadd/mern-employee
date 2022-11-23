@@ -1,7 +1,15 @@
 import { useDispatch } from 'react-redux'
-import { deleteEmployee } from '../features/goals/goalSlice'
+import { deleteEmployee } from '../features/employees/employeeSlice'
 import { FaTrashAlt } from 'react-icons/fa';
 import styled from 'styled-components'
+
+const FaTrash = styled(FaTrashAlt)`
+  color: red;
+  font-size: 1.5rem;
+  cursor: pointer;
+`;
+
+
 
 
 const DivContainer = styled.div`
@@ -16,7 +24,7 @@ const Div = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 100vh;
   max-width: 700px;
   margin: 0 auto;
   padding: 1rem;
@@ -33,26 +41,15 @@ function Employee({ employee }) {
   return (
     <DivContainer>
     <Div>
-    
-         <span> {employee.text} </span>
-          <span>{employee.gender}</span>
-          <span>{employee.salary}</span>
+      <span> {employee.name} </span>
+      <span>{employee.gender}</span>
+      <span>{employee.salary}</span>
 
-          <button onClick={() => dispatch(deleteEmployee(employee._id))} className='close'>
-            <FaTrashAlt />
-     </button>
-
-         
+      <button onClick={() => dispatch(deleteEmployee(employee._id))} className='close'>
+        <FaTrash />
+  </button> 
     </Div>
     </DivContainer>
-    //   <div>{new Date(goal.createdAt).toLocaleString('en-US')}</div>
-    //   <h2>{goal.text}</h2>
-    //   <h2>{goal.gender}</h2>
-    //   <h2>{goal.salary}</h2>
-    //   <button onClick={() => dispatch(deleteGoal(goal._id))} className='close'>
-    //     X
-    //   </button>
-    // </Table>
   )
 }
 

@@ -1,21 +1,64 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createEmployee } from '../features/goals/goalSlice'
+import { createEmployee } from '../features/employees/employeeSlice'
+import styled from 'styled-components'
+
+const Sectiontwo = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+  `;
+
+
+  const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+  height: 70vh;
+  max-width: 500px;
+  background: #ccc;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+`;
+
+  const Input = styled.input`
+  width: 400px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+`;
+
+const Select = styled.select`
+  width: 400px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+`;
 
 function EmployeeForm() {
- const [text, setText] = useState('')
+ const [name, setName] = useState('')
 const [dateOfBirth, setDateOfBirth] = useState('')
 const [gender, setGender] = useState('')
 const [salary, setSalary] = useState('')
-
-//   const [information, setInformation] = useState({
-//     text: '',
-//     date_of_birth: '',
-//     gender: '',
-//     salary: '',
-//   })
-
-// const {text, date_of_birth, gender, salary} = information
 
 
   const dispatch = useDispatch()
@@ -23,34 +66,30 @@ const [salary, setSalary] = useState('')
   const onSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(createEmployee({ text, dateOfBirth, gender, salary }))
-    setText('')
+    dispatch(createEmployee({ name, dateOfBirth, gender, salary }))
+    setName('')
     setDateOfBirth('')
     setGender('')
     setSalary('')
   }
 
-  // dispatch(createGoal({information}))
-  // setInformation('')
-  // }
-
   return (
-    <section className='form'>
-      <form onSubmit={onSubmit}>
-        <div className='form-group'>
+    <Sectiontwo>
+      <Form onSubmit={onSubmit}>
+        <div>
           <label htmlFor='text'>Name</label>
-          <input
+          <Input
             type='text'
-            name='text'
-            id='text'
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            name='name'
+            id='name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
-        <div className='form-group'>
+        <div>
           <label htmlFor='text'>Date of birth</label>
-          <input
+          <Input
             type='text'
             name='dateOfBirth'
             id='dateOfBirth'
@@ -59,9 +98,9 @@ const [salary, setSalary] = useState('')
           />
         </div>
 
-        <div className='form-group'>
+        <div>
           <label htmlFor='text'>gender</label>
-          <select name="Gender" required 
+          <Select name="Gender" required 
             id='gender'
             value={gender}
             onChange={(e) => setGender(e.target.value)}>
@@ -69,12 +108,12 @@ const [salary, setSalary] = useState('')
             <option value="male">male</option>
             <option value="tea">female</option>
            
-          </select>
+          </Select>
         </div>
 
-        <div className='form-group'>
+        <div>
           <label htmlFor='text'>Salary</label>
-          <input
+          <Input
             type='text'
             name='salary'
             id='salary'
@@ -82,13 +121,13 @@ const [salary, setSalary] = useState('')
             onChange={(e) => setSalary(e.target.value)}
           />
         </div>
-        <div className='form-group'>
+        <div>
           <button className='btn btn-block' type='submit'>
             Add 
           </button>
         </div>
-      </form>
-    </section>
+      </Form>
+    </Sectiontwo>
   )
 }
 
