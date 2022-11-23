@@ -3,31 +3,13 @@ import { deleteEmployee } from '../features/goals/goalSlice'
 import { FaTrashAlt } from 'react-icons/fa';
 import styled from 'styled-components'
 
-const Table = styled.table`
+
+const DivContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  border-collapse: collapse;
-  thead {
-    background: #333;
-    color: #fff;
-    th {
-      padding: 0.5rem;
-    }
-  }
-  tbody {
-    tr {
-      border-bottom: 3px solid #fff;
-      padding: 1rem;
-      &:last-child {
-        border-bottom: 0;
-      }
-      td {
-        padding: 0.5rem;
-      }
-    }
-  }
-`;
+  border: 1px solid cyan;
+  `;
 
 const Div = styled.div`
   display: flex;
@@ -49,16 +31,20 @@ function Employee({ employee }) {
   const dispatch = useDispatch()
 
   return (
+    <DivContainer>
     <Div>
     
          <span> {employee.text} </span>
           <span>{employee.gender}</span>
           <span>{employee.salary}</span>
+
           <button onClick={() => dispatch(deleteEmployee(employee._id))} className='close'>
             <FaTrashAlt />
      </button>
+
          
     </Div>
+    </DivContainer>
     //   <div>{new Date(goal.createdAt).toLocaleString('en-US')}</div>
     //   <h2>{goal.text}</h2>
     //   <h2>{goal.gender}</h2>

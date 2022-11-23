@@ -9,7 +9,7 @@ const initialState = {
   message: '',
 }
 
-// Create new goal
+// Create new user
 export const createEmployee = createAsyncThunk(
   'goals/create',
   async (goalData, thunkAPI) => {
@@ -28,7 +28,7 @@ export const createEmployee = createAsyncThunk(
   }
 )
 
-// Get user goals
+// Get user 
 export const getEmployees = createAsyncThunk(
   'goals/getAll',
   async (_, thunkAPI) => {
@@ -47,7 +47,7 @@ export const getEmployees = createAsyncThunk(
   }
 )
 
-// Delete user goal
+// Delete user 
 export const deleteEmployee = createAsyncThunk(
   'goals/delete',
   async (id, thunkAPI) => {
@@ -65,6 +65,27 @@ export const deleteEmployee = createAsyncThunk(
     }
   }
 )
+
+// Update user
+export const updateEmployee = createAsyncThunk(
+  'goals/update',
+  async (goalData, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await goalService.updateEmployee(goalData.id, goalData, token)
+    } catch (error) {
+      const message =
+
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 
 export const goalSlice = createSlice({
   name: 'goal',
@@ -115,6 +136,27 @@ export const goalSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+
+      .addCase(updateEmployee.pending, (state) => {
+        state.isLoading = true
+      }
+      )
+      .addCase(updateEmployee.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.goals = state.goals.map((goal) =>
+          goal._id === action.payload.id ? action.payload : goal
+        )
+      }
+      )
+      .addCase(updateEmployee.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      }
+      )
+
+      
   },
 })
 

@@ -26,31 +26,6 @@ const Section = styled.section`
   }
 `;
 
-const Table = styled.table`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  border-collapse: collapse;
-  thead {
-    background: #333;
-    color: #fff;
-    th {
-      padding: 0.5rem;
-    }
-  }
-  tbody {
-    tr {
-      border-bottom: 3px solid #fff;
-      &:last-child {
-        border-bottom: 0;
-      }
-      td {
-        padding: 0.5rem;
-      }
-    }
-  }
-`;
-
 
 
 function Dashboard() {
