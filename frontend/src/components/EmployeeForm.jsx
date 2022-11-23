@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createGoal } from '../features/goals/goalSlice'
+import { createEmployee } from '../features/goals/goalSlice'
 
-function GoalForm() {
+function EmployeeForm() {
  const [text, setText] = useState('')
 const [dateOfBirth, setDateOfBirth] = useState('')
 const [gender, setGender] = useState('')
@@ -23,7 +23,7 @@ const [salary, setSalary] = useState('')
   const onSubmit = (e) => {
     e.preventDefault()
 
-    dispatch(createGoal({ text, dateOfBirth, gender, salary }))
+    dispatch(createEmployee({ text, dateOfBirth, gender, salary }))
     setText('')
     setDateOfBirth('')
     setGender('')
@@ -61,13 +61,15 @@ const [salary, setSalary] = useState('')
 
         <div className='form-group'>
           <label htmlFor='text'>gender</label>
-          <input
-            type='text'
-            name='gender'
+          <select name="Gender" required 
             id='gender'
             value={gender}
-            onChange={(e) => setGender(e.target.value)}
-          />
+            onChange={(e) => setGender(e.target.value)}>
+            <option value="" disabled selected hidden>Choose  Gender</option>
+            <option value="male">male</option>
+            <option value="tea">female</option>
+           
+          </select>
         </div>
 
         <div className='form-group'>
@@ -90,4 +92,4 @@ const [salary, setSalary] = useState('')
   )
 }
 
-export default GoalForm
+export default EmployeeForm

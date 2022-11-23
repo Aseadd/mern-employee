@@ -10,12 +10,12 @@ const initialState = {
 }
 
 // Create new goal
-export const createGoal = createAsyncThunk(
+export const createEmployee = createAsyncThunk(
   'goals/create',
   async (goalData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      return await goalService.createGoal(goalData, token)
+      return await goalService.createEmployee(goalData, token)
     } catch (error) {
       const message =
         (error.response &&
@@ -29,12 +29,12 @@ export const createGoal = createAsyncThunk(
 )
 
 // Get user goals
-export const getGoals = createAsyncThunk(
+export const getEmployees = createAsyncThunk(
   'goals/getAll',
   async (_, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      return await goalService.getGoals(token)
+      return await goalService.getEmployees(token)
     } catch (error) {
       const message =
         (error.response &&
@@ -48,12 +48,12 @@ export const getGoals = createAsyncThunk(
 )
 
 // Delete user goal
-export const deleteGoal = createAsyncThunk(
+export const deleteEmployee = createAsyncThunk(
   'goals/delete',
   async (id, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      return await goalService.deleteGoal(id, token)
+      return await goalService.deleteEmployee(id, token)
     } catch (error) {
       const message =
         (error.response &&
@@ -74,43 +74,43 @@ export const goalSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(createGoal.pending, (state) => {
+      .addCase(createEmployee.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(createGoal.fulfilled, (state, action) => {
+      .addCase(createEmployee.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
         state.goals.push(action.payload)
       })
-      .addCase(createGoal.rejected, (state, action) => {
+      .addCase(createEmployee.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
       })
-      .addCase(getGoals.pending, (state) => {
+      .addCase(getEmployees.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(getGoals.fulfilled, (state, action) => {
+      .addCase(getEmployees.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
         state.goals = action.payload
       })
-      .addCase(getGoals.rejected, (state, action) => {
+      .addCase(getEmployees.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
       })
-      .addCase(deleteGoal.pending, (state) => {
+      .addCase(deleteEmployee.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(deleteGoal.fulfilled, (state, action) => {
+      .addCase(deleteEmployee.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
         state.goals = state.goals.filter(
           (goal) => goal._id !== action.payload.id
         )
       })
-      .addCase(deleteGoal.rejected, (state, action) => {
+      .addCase(deleteEmployee.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

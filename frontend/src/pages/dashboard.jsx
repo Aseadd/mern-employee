@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import GoalForm from '../components/GoalForm'
-import GoalItem from '../components/GoalItem'
+import EmployeeForm from '../components/EmployeeForm'
+import Employee from '../components/Employee'
 import Spinner from '../components/Spinner'
-import { getGoals, reset } from '../features/goals/goalSlice'
+import { getEmployees, reset } from '../features/goals/goalSlice'
 import styled from 'styled-components'
 
 const Section = styled.section`
@@ -26,6 +26,32 @@ const Section = styled.section`
   }
 `;
 
+const Table = styled.table`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-collapse: collapse;
+  thead {
+    background: #333;
+    color: #fff;
+    th {
+      padding: 0.5rem;
+    }
+  }
+  tbody {
+    tr {
+      border-bottom: 3px solid #fff;
+      &:last-child {
+        border-bottom: 0;
+      }
+      td {
+        padding: 0.5rem;
+      }
+    }
+  }
+`;
+
+
 
 function Dashboard() {
   const navigate = useNavigate()
@@ -45,7 +71,7 @@ function Dashboard() {
       navigate('/login')
     }
 
-    dispatch(getGoals())
+    dispatch(getEmployees())
 
     return () => {
       dispatch(reset())
@@ -63,13 +89,13 @@ function Dashboard() {
         <p>Dashboard</p>
       </Section>
 
-      <GoalForm />
+      <EmployeeForm/>
 
       <section className='content'>
         {goals.length > 0 ? (
-          <div className='goals'>
-            {goals.map((goal) => (
-              <GoalItem key={goal._id} goal={goal} />
+          <div>
+            {goals.map((employee) => (
+              <Employee key={employee._id} employee={employee} />
             ))}
           </div>
         ) : (
