@@ -47,6 +47,11 @@ Run both backend and frontend
   npm run dev
 ```
 
+To run docker
+```sh
+  docker run -p 8080:5000 mern-employee
+```
+
 ### To build the app for production
 
 ```sh
