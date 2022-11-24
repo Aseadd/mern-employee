@@ -31,7 +31,7 @@ const Div = styled.div`
   border-radius: 1rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   text-align: center;
-  color: #333;
+  color: #fff;
   `;
 
 

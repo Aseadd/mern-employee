@@ -37,7 +37,8 @@ const Sectiontwo = styled.section`
   border-radius: 1rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   text-align: center;
-  color: #333;
+  background: #011C27;
+  color: #fff;
   margin-bottom: 2rem;
   `;
 
@@ -50,7 +51,7 @@ const Div = styled.div`
   max-width: 700px;
   background: tomato;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   `;
 
