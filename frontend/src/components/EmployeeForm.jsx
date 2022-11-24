@@ -94,7 +94,7 @@ const [salary, setSalary] = useState('')
             type='date'
             name='dateOfBirth'
             id='dateOfBirth'
-            value={dateOfBirth}
+            value={dateOfBirth.toString()}
             onChange={(e) => setDateOfBirth(e.target.value)}
             required
           />
@@ -132,6 +132,7 @@ const [salary, setSalary] = useState('')
       </Form>
     </Sectiontwo>
   )
+  
 }
 
 export default EmployeeForm

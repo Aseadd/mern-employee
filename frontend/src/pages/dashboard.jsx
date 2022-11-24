@@ -100,6 +100,7 @@ function Dashboard() {
           <span>Name </span>
           <span>Gender </span>
           <span>Salary </span>
+          <span>Date of Birth</span>
           <span>Action </span>
           
         </Div>

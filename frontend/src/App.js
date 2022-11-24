@@ -6,6 +6,7 @@ import Dashboard from './pages/dashboard'
 import Login from './pages/login'
 import Register from './pages/register'
 import About from './pages/about'
+import React from 'react'
 
 
 function App() {

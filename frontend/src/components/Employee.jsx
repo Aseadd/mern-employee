@@ -38,12 +38,16 @@ const Div = styled.div`
 function Employee({ employee }) {
   const dispatch = useDispatch()
 
+  const date = new Date(employee.dateOfBirth).toLocaleDateString()
+
+
   return (
     <DivContainer>
     <Div>
       <span> {employee.name} </span>
       <span>{employee.gender}</span>
       <span>{employee.salary}</span>
+      <span>{date}</span>
 
       <button onClick={() => dispatch(deleteEmployee(employee._id))} className='close'>
         <FaTrash />

@@ -1,6 +1,7 @@
-FROM node:14-slim
-WORKDIR  /backend/server
-COPY package.json backend/server
-RUN npm install
+FROM node:16-alpine as builder
+WORKDIR /app 
+COPY package.json ./ 
+RUN npm install 
 COPY . .
+EXPOSE 8080 
 CMD [ "npm", "npm run server"]

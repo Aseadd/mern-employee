@@ -2,7 +2,7 @@ import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
-
+import React from 'react'
 
 function Header() {
   const navigate = useNavigate()
@@ -50,5 +50,7 @@ function Header() {
     </header>
   )
 }
+
+
 
 export default Header
