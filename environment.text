@@ -1,0 +1,4 @@
+NODE_ENV=development
+PORT=5000
+MONGO_URI=mongodb+srv://ada:12341234@addis.vqaco2t.mongodb.net/mernapp?retryWrites=true&w=majority
+JWT_SECRET=12341234
